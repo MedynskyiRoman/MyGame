@@ -36,7 +36,7 @@ class Main extends Phaser.Scene {
         this.pipes = this.physics.add.group();
 
         this.timedEvent = this.time.addEvent({
-            delay: 1500,
+            delay: 1000,
             callback: this.addRowOfPipes, //Цю функцію реалізуємо на наступному кроці
             callbackScope: this,
             loop: true
@@ -47,7 +47,7 @@ class Main extends Phaser.Scene {
 
     // While preload() and create() run only once at the start of the game, update() runs constantly.
     update() {
-        if (this.plane.angle < 20) {
+        if (this.plane.angle < 0) {
             this.plane.angle += 1;
         }
 
@@ -63,7 +63,7 @@ class Main extends Phaser.Scene {
     jump() {
         this.tweens.add({
             targets: this.plane,
-            angle: -20,
+            angle: -360,
             duration: 100,
             repeat: 1
         });
